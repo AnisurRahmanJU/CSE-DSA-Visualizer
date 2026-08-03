@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Visualizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">&lt;/&gt;</div>
+      <div class="brand-text">
+        <div class="brand-title">DSA Visualizer</div>
+        <div class="brand-sub">step-through visualizer</div>
+      </div>
+    </div>
+    <div id="navGroups"></div>
+  </nav>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="category-pill" id="categoryPill">SORTING</div>
+        <div class="topbar-title" id="topTitle">Bubble Sort</div>
+        <div class="topbar-desc" id="topDesc">Repeatedly steps through the array, comparing adjacent elements and swapping them if they are in the wrong order.</div>
+        <div class="badges">
+          <span class="badge b-time" id="badgeTime">Time: O(n²)</span>
+          <span class="badge b-space" id="badgeSpace">Space: O(1)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="workspace">
+      <section class="panel">
+        <div class="panel-head">
+          <div class="panel-head-title"><span class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></span>&nbsp;&nbsp;main.c</div>
+          <div class="pc-chip" id="pcChip">LINE 1</div>
+        </div>
+        <div class="code-scroll" id="codeScroll">
+          <table class="code-table" id="codeTable"></table>
+          <textarea id="customCodeArea" class="custom-code-area" spellcheck="false" placeholder="Paste or write a C program here. It needs an int main() function. Supported: int/float/char, arrays, if/else, while/do-while/for, functions & recursion, printf, basic scanf, break/continue."></textarea>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div class="panel-head-title">◧ visualization stage</div>
+          <div class="pc-chip" id="stepChip" style="background:var(--indigo);">STEP 1</div>
+        </div>
+        <div class="viz-body" id="vizBody"></div>
+      </section>
+    </div>
+
+    <div class="strip">
+      <div class="strip-narration">
+        <div class="strip-label">What's happening</div>
+        <div class="strip-text" id="narrationText">Ready to run.</div>
+      </div>
+      <div class="vars-wrap">
+        <div class="strip-label">Variables</div>
+        <div class="vars-chips" id="varsChips"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="transport">
+        <button class="tbtn" id="btnReset" title="Reset">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        </button>
+        <button class="tbtn" id="btnPrev" title="Step back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5v14"/><path d="M17 12L6 5v14z"/></svg>
+        </button>
+        <button class="tbtn primary" id="btnPlay" title="Play">
+          <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="tbtn" id="btnNext" title="Step forward">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5v14"/><path d="M7 12l11-7v14z"/></svg>
+        </button>
+        <div class="step-counter" id="stepCounter">Step 0 / 0</div>
+      </div>
+      <div class="speed-wrap">
+        SPEED
+        <input type="range" id="speedRange" min="1" max="5" value="3" step="1">
+      </div>
+      <div class="io-wrap" id="ioWrap"></div>
+    </div>
+    <div class="footnote">Educational C execution model — traces real algorithm logic, one statement at a time.</div>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
